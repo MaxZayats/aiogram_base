@@ -28,7 +28,3 @@ async def receive_media(message: types.Message):
 def start():
     from core.events import on_shutdown, on_startup
     executor.start_polling(dispatcher=dp, on_startup=on_startup, on_shutdown=on_shutdown)
-
-
-if __name__ == "__main__":
-    start()
