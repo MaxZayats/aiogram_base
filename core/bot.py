@@ -1,8 +1,6 @@
 import logging
 
 from aiogram import Bot, Dispatcher, executor, types
-from aiogram.types import (InlineKeyboardButton, InlineKeyboardMarkup,
-                           KeyboardButton)
 from settings.config import admins_id, token
 from core.handlers import set_handlers
 
@@ -20,10 +18,17 @@ async def echo(message: types.Message):
     await message.answer(message.text)
 
 
+@dp.callback_query_handler()
+async def process_callback_buttons(callback_query: types.CallbackQuery):
+    # do something
+    await callback_query.answer()
+
+
 @dp.message_handler(content_types=['photo', 'video', 'document'])
 async def receive_media(message: types.Message):
-    chat_id = message['chat']['id']
-    
+    # do something
+    pass    
+
 
 def start():
     from core.events import on_shutdown, on_startup
